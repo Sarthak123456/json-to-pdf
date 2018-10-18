@@ -27,12 +27,12 @@ export class InvoiceComponent implements OnInit {
          total += (parseFloat(g[i]));
         }
         const x = this.response.data[0];
-        const name = [];
-        const rate = [];
-        const qty = [];
-        const tot = [];
-        const tax = [];
-        const disc = [];
+        const name: any = [];
+        const rate: any = [];
+        const qty: any = [];
+        const tot: any = [];
+        const tax: any = [];
+        const disc: any = [];
       x.invoice_items.map(function(item) {
         name.push({ text : item.item_name});
        rate.push( { text : item.item_rate} );
@@ -41,7 +41,7 @@ export class InvoiceComponent implements OnInit {
         tax.push({ text : item.item_tax_rate}),
         disc.push({ text: item.item_discount});
     });
-    console.log(tot);
+    // console.log(tot);
       // let y = x.map(function(item) { return item.tnc; });
       const docDefinition = {
         content: [
@@ -81,14 +81,17 @@ export class InvoiceComponent implements OnInit {
                                     // % width
                                     width: '30%',
                                     // tslint:disable-next-line:max-line-length
-                                    text:  x.client_company  + '\n' + x.client_address + ',' + x.client_address_2 + '\n'
-                                    + x.client_address_3 + ', ' + x.client_country  + '\n' + x.client_address_4 + '\n'
+                                    text: `${x.client_company}
+                                    ${x.client_address},  ${x.client_address_2}
+                                    ${x.client_address_3}, ${x.client_country}
+                                    ${x.client_address_4}`
                                   },
                                   {
                                     // % width
                                     width: '30%',
-                                    text: x.client_shipping_address  + ',' + x.client_shipping_address_2 + '\n' +
-                                     x.client_shipping_address_3 + ', ' + x.client_country  + '\n' + x.client_address_4 + '\n'
+                                    text: `${x.client_shipping_address} , ${x.client_shipping_address_2} 
+                                     ${x.client_shipping_address_3} , ${x.client_country} 
+                                      ${x.client_address_4 }`
                                   }
                                 ],
                                 // optional space between columns
@@ -304,7 +307,5 @@ export class InvoiceComponent implements OnInit {
       };
       pdfMake.createPdf(docDefinition).open();
     }
-Download() {
-  alert('Download');
-}
+
 }
