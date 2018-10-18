@@ -1,0 +1,120 @@
+<!-- <p>
+  invoice works!
+  </p>
+
+<p *ngFor = "let t of  response.data"> {{ t.invoice_id }}</p>
+
+<div class="invoice"  *ngFor = "let t of  response.data">
+<h1 id ='right'> Billing Invoice</h1>
+<h1>{{ t.company_name | uppercase }}</h1>
+<p>{{ t.company_country }}</p>
+
+<p id ='right'> Invoice Number</p>
+<p>{{ t.invoice_number}}</p>
+
+</div> -->
+
+<div *ngFor = "let t of  response.data" class="invoice_2">
+  <div class="container">
+    
+      <header>
+    <div class="col-md-12"><h1>{{ t.company_name | uppercase }}</h1></div>
+      
+ </header>
+
+  <div class="row">
+      <div class="col-md-4"> <h3 class="center">INVOICE</h3></div>
+    <div class="col-md-3">
+      <p><b>Bill To:</b></p>
+      <p>{{ t.client_company }}</p> 
+      <p>{{ t.client_address }}, {{ t.client_address_2 }}</p>
+      <!-- <p>{{ }}</p> -->
+      <p>{{ t.client_address_3 }}, {{  t.client_country }}</p>
+      <!-- <p>{{}}</p> -->
+      <p>{{ t.client_address_4 }}</p>
+    
+    </div>
+
+    <div class="col-md-3">
+        <p><b>Ship To:</b></p>
+        <p>{{ t.client_shipping_address }}, {{ t.client_shipping_address_2 }}</p>
+        <p></p>
+        <p>{{ t.client_shipping_address_3 }}, {{ t.client_shipping_country }}</p>
+        <p>{{ t.client_shipping_address_4 }}</p>
+        <p></p>
+      
+      </div>
+
+
+  </div>
+
+<div class="row">
+
+  <div class="  col-md-3"><p class="bottom">Invoice Number</p><br><p>{{ t.invoice_number }}</p></div>
+
+  <div class="  col-md-3"><p class='bottom'>Invoice Date</p><br><p>{{ t.invoice_date }}</p></div>
+
+  <div class="  col-md-3"><p class="bottom"> Client Name</p><br><p>{{ t.client_company }}</p></div>
+
+  <div class="  col-md-3"><p class="bottom">Transport Method</p><br><p>{{ t.transport_mode }}</p></div>
+
+</div>
+
+<div class="row"> 
+
+    <table *ngFor = "let x of  response.data" class="table table-responsive-xl">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Rate</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Extra Tax</th>
+            <th scope="col">Extra Charge</th>
+            <th scope="col">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr  *ngFor = "let y of  x.invoice_items">
+            <th scope="row">{{ y.item_name }}</th>
+            <td>{{ y.item_rate }}</td>
+            <td>{{ y.item_qty }}</td>
+            <td>{{ y.item_weighted_extra_charge }}</td>
+            <td>{{ y.item_weighted_extra_tax }}</td>
+            <td>{{ y.item_total }}</td>
+          </tr>
+        
+        </tbody>
+      </table>
+
+
+</div>
+
+<div class="row">
+<div class="col-md-6"><h5><b>Terms & Conditions</b></h5>
+<p >{{ t.tnc | uppercase}}</p>
+</div>
+<div class="col-md-6"><h5><b>Amount Due</b></h5>
+  <h1>{{ sum }}</h1>
+  </div>
+</div>
+
+  <footer class="">
+    <div class='col-md-6'>
+    <p><b>Contact Details</b></p>
+    <p>{{ t.company_name | uppercase}}</p>
+    <p>{{ t.company_email }}</p>
+  </div>
+
+  <div class="col-md-6">
+    <h2>Thank You!</h2>
+    <button (click)='onSubmit()' class="btn btn-primary">View in  PDF</button> &nbsp;&nbsp;&nbsp;
+    <button (click)='Download()' class="btn btn-warning">Download PDF</button>
+  </div>
+  </footer>
+
+
+  </div>
+
+
+</div>
+

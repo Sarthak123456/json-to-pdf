@@ -1,1 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
+
+body html >* {
+    height: 100%;
+    width:100%;
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+}
+.invoice_2{
+    border: 1px solid black ;
+    padding:10px;
+    margin:auto;
+    text-align: center;
+    width:60%;
+
+}
+
+#right{
+    text-align: right;
+}
+
+.bottom{
+    border-bottom:2px solid gray;
+    width: 70%;
+}
+
+footer{
+    width: 100%;
+    display: inline-flex;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    text-align: center;
+}
+
+.center{
+    position: absolute;
+    top: 30%;
+}
